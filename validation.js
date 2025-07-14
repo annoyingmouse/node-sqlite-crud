@@ -1,8 +1,9 @@
-const Joi = require('@hapi/joi');
+import pkg from '@hapi/joi'
+const Joi = pkg;
 
 //Validation schema for the request body
 
-const registerValidator = (data) => {
+export const registerValidator = (data) => {
   const schema = Joi.object({
     username: Joi.string()
       .min(6)
@@ -18,7 +19,7 @@ const registerValidator = (data) => {
   return schema.validate(data);
 }
 
-const loginValidator = (data) => {
+export const loginValidator = (data) => {
   const schema = Joi.object({
     email: Joi.string()
       .min(6)
@@ -30,6 +31,3 @@ const loginValidator = (data) => {
   });
   return schema.validate(data);
 }
-
-module.exports.registerValidator = registerValidator;
-module.exports.loginValidator = loginValidator;

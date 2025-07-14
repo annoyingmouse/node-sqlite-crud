@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
-const authMiddleware = (req, res, next)=>{
+export const authMiddleware = (req, res, next)=>{
   //Pull the token value from the header on any requests that come in. If the token isn't present, reject access to the route
   const token = req.header('auth-token');
   if(!token) res.status(401).send("Access Denied");
@@ -16,5 +16,3 @@ const authMiddleware = (req, res, next)=>{
     res.status(400).send("Invalid credentials");
   }
 }
-
-module.exports = authMiddleware;

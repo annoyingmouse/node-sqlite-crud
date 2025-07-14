@@ -1,12 +1,14 @@
-const router = require('express').Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+import express from 'express';
+const router = express.Router();
 
-//Bring in Sequelize model so we can read/write users in the Database:
-const User = require('../models').User;
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+
+//Bring in a Sequelize model so we can read/write users in the Database:
+import {User} from '../models/User.js';
 
 //Bring in our Joi validator for request body
-const {registerValidator, loginValidator} = require('../validation');
+import {registerValidator, loginValidator} from '../validation.js';
 
 
 router.post('/register', async (req, res)=>{
@@ -61,4 +63,4 @@ router.post('/login', async (req, res)=>{
   res.header("auth-token", token).send(token);
 })
 
-module.exports = router;
+export default router;

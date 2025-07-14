@@ -1,11 +1,9 @@
-const express = require('express');
+import express from 'express'
+import dotenv from 'dotenv'
+dotenv.config()
 
-//Import and initialise the environment variables - stored in .dotenv file in project root
-require('dotenv').config();
-
-//Import Routes
-const authRoutes = require('./routes/auth');
-const protectedRoutes = require('./routes/protected');
+import authRoutes from './routes/auth.js'
+import protectedRoutes from './routes/protected.js';
 
 //Initialise Express
 const app = express();
