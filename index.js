@@ -4,6 +4,7 @@ dotenv.config();
 
 import authRoutes from "./routes/auth.js";
 import protectedRoutes from "./routes/protected.js";
+import taskRoutes from "./routes/taskRoutes.js";
 
 //Initialise Express
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 //Set up API routes
 app.use("/api/user", authRoutes);
 app.use("/api/protected", protectedRoutes);
+app.use("/api/tasks", taskRoutes);
 
 //404 Error routes as a catch-all
 app.use((req, res, next) => {

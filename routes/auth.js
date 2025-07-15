@@ -58,7 +58,8 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign(
     {
       id: user.id,
-      exp: Math.floor(Date.now() / 1000) + 60 * 10,
+      // exp: Math.floor(Date.now() / 1000) + 60 * 10, // 10-minute expiry
+      exp: Math.floor(Date.now() / 1000) + 60 * 60, // 1-hour expiry
     },
     process.env.TOKEN_SECRET,
   );
