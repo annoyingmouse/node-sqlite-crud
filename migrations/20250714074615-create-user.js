@@ -1,6 +1,5 @@
-"use strict";
-module.exports = {
-  up: (queryInterface, Sequelize) => {
+const migration = {
+  up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable("Users", {
       id: {
         allowNull: false,
@@ -27,7 +26,9 @@ module.exports = {
       },
     });
   },
-  down: (queryInterface, Sequelize) => {
+  down: async (queryInterface) => {
     return queryInterface.dropTable("Users");
   },
 };
+
+export default migration;

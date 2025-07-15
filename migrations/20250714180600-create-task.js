@@ -1,5 +1,5 @@
-module.exports = {
-  up: (queryInterface, Sequelize) => {
+const migration = {
+  up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable("Tasks", {
       id: {
         allowNull: false,
@@ -32,18 +32,20 @@ module.exports = {
         type: Sequelize.DATE,
       },
       userId: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: "Users",
           key: "id",
         },
         onUpdate: "CASCADE",
-        onDelete: "SET NULL"
+        onDelete: "SET NULL",
       },
     });
   },
-  down: (queryInterface) => {
+  down: async (queryInterface) => {
     return queryInterface.dropTable("Tasks");
   },
 };
+
+export default migration;
