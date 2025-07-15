@@ -29,3 +29,13 @@ export const taskAddValidator = (data) => {
   });
   return schema.validate(data);
 };
+
+export const taskEditValidator = (data) => {
+  const schema = Joi.object({
+    title: Joi.string().min(3).optional(),
+    description: Joi.string().min(5).optional(),
+    dueDate: Joi.date().iso().optional(), // ISO format for date, as dates are a pain!
+    status: Joi.string().valid("low", "medium", "high").optional(),
+  });
+  return schema.validate(data);
+};
